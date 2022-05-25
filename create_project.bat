@@ -14,13 +14,21 @@ md "%CD%\%folderName%"
 cd "%CD%\%folderName%"
 md "scripts"
 
+
 :: copy paste the readme file into the project file
 xcopy "C:\Users\alexa\Desktop\Studies\Perso\Project_automation\README.md" "%CD%\"
 
-:: copy paste the license file into the project file
+
+:: copy paste the license file into the project file with a condition
 echo "Do you want to add MIT License ? [Y/N]"
 set /P userChoice=
 if /I "%UserChoice%" == "Y" (xcopy "C:\Users\alexa\Desktop\Studies\Perso\Project_automation\LICENSE" "%CD%\")
 
-echo "Done"
-::python C:\Users\alexa\Desktop\Studies\Perso\Project_automation\project_auto.py
+echo "Project path is %CD%"
+:: open python script for git initialization
+echo "Do you want to initialize a git repository for this project ? [Y/N]"
+set /P userChoiceGit=
+if /I "%userChoiceGit%" == "Y" (python C:\Users\alexa\Desktop\Studies\Perso\Project_automation\project_auto.py)
+
+
+echo "Everything is set up !"
